@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga Relámpago - Fixture</title>
+    <style>
+        body {
+            background-color: #121e2d;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        p.subtitle {
+            color: #a0aec0;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #2b3e50;
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button.active {
+            background-color: #4ade80;
+            color: #000000;
+        }
+
+        h2.round-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .matches-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .match-card {
+            background-color: #1a2a3a;
+            border-left: 5px solid #4ade80;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .team {
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 35%;
+        }
+
+        .team.home { text-align: left; }
+        .team.away { text-align: right; }
+
+        .score-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+        .score {
+            background-color: #2b3e50;
+            padding: 6px 14px;
+            border-radius: 4px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .vs {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Fases Eliminatorias</h1>
+        <p class="subtitle">Hacé clic en cada botón para ver los partidos de cada ronda.</p>
+
+        <div class="buttons-container">
+            <button id="btn-cuartos" onclick="cambiarRonda('cuartos')">Cuartos</button>
+            <button id="btn-semis" onclick="cambiarRonda('semis')">Semis</button>
+            <button id="btn-final" onclick="cambiarRonda('final')">Final</button>
+        </div>
+
+        <h2 class="round-title" id="titulo-ronda">Cuartos de Final</h2>
+
+        <div class="matches-list" id="contenedor-partidos">
+            </div>
+    </div>
+
+    <footer>
+        © 2026 Liga Relámpago - Proyecto de Software
+    </footer>
+
+    <script>
+        // Estructura de datos con todos los casilleros vacíos ("-")
+        const torneo = {
+            cuartos: [
+                { local: "Los Pibes FC", scoreLocal: "-", visitante: "Dep. Fernet", scoreVisitante: "-" },
+                { local: "C.A. La Scaloneta", scoreLocal: "-", visitante: "Real Bañil", scoreVisitante: "-" },
+                { local: "Talleres del Viaducto", scoreLocal: "-", visitante: "La Amistad", scoreVisitante: "-" },
+                { local: "Barrio Jardín", scoreLocal: "-", visitante: "La Villa FC", scoreVisitante: "-" }
+            ],
+            semis: [
+                { local: "Ganador Cuartos 1", scoreLocal: "-", visitante: "Ganador Cuartos 3", scoreVisitante: "-" },
+                { local: "Ganador Cuartos 2", scoreLocal: "-", visitante: "Ganador Cuartos 4", scoreVisitante: "-" }
+            ],
+            final: [
+                { local: "Ganador Semi 1", scoreLocal: "-", visitante: "Ganador Semi 2", scoreVisitante: "-" }
+            ]
+        };
+
+        // Función para cambiar de pestaña y redibujar la pantalla
+        function cambiarRonda(ronda) {
+            // 1. Desactivar todos los botones y activar el seleccionado
+            document.getElementById('btn-cuartos').classList.remove('active');
+            document.getElementById('btn-semis').classList.remove('active');
+            document.getElementById('btn-final').classList.remove('active');
+            document.getElementById('btn-' + ronda).classList.add('active');
+
+            // 2. Cambiar el título superior automáticamente según la ronda
+            const tituloHtml = document.getElementById('titulo-ronda');
+            if (ronda === 'cuartos') tituloHtml.innerText = "Cuartos de Final";
+            if (ronda === 'semis') tituloHtml.innerText = "Semifinales";
+            if (ronda === 'final') tituloHtml.innerText = "Gran Final";
+
+            // 3. Limpiar y dibujar los partidos correspondientes
+            const contenedor = document.getElementById('contenedor-partidos');
+            contenedor.innerHTML = ""; 
+
+            const partidos = torneo[ronda];
+
+            partidos.forEach(partido => {
+                const tarjetaMatch = `
+                    <div class="match-card">
+                        <div class="team home">${partido.local}</div>
+                        <div class="score-container">
+                            <div class="score">${partido.scoreLocal}</div>
+                            <span class="vs">vs</span>
+                            <div class="score">${partido.scoreVisitante}</div>
+                        </div>
+                        <div class="team away">${partido.visitante}</div>
+                    </div>
+                `;
+                contenedor.innerHTML += tarjetaMatch;
+            });
+        }
+
+        // Al cargar la página por primera vez, muestra Cuartos
+        window.onload = function() {
+            cambiarRonda('cuartos');
+        };
+    </script>
+
+</body>
+</html>
