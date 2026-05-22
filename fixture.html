@@ -142,20 +142,20 @@
     </footer>
 
     <script>
-        // Estructura de datos con TODOS los partidos ordenados por fase
+        // Estructura de datos con todos los casilleros vacíos ("-")
         const torneo = {
             cuartos: [
-                { local: "Los Pibes FC", scoreLocal: 3, visitante: "Dep. Fernet", scoreVisitante: 1 },
-                { local: "C.A. La Scaloneta", scoreLocal: 2, visitante: "Real Bañil", scoreVisitante: 0 },
-                { local: "Talleres del Viaducto", scoreLocal: 1, visitante: "La Amistad", scoreVisitante: 2 },
-                { local: "Barrio Jardín", scoreLocal: 0, visitante: "La Villa FC", scoreVisitante: 3 }
+                { local: "Los Pibes FC", scoreLocal: "-", visitante: "Dep. Fernet", scoreVisitante: "-" },
+                { local: "C.A. La Scaloneta", scoreLocal: "-", visitante: "Real Bañil", scoreVisitante: "-" },
+                { local: "Talleres del Viaducto", scoreLocal: "-", visitante: "La Amistad", scoreVisitante: "-" },
+                { local: "Barrio Jardín", scoreLocal: "-", visitante: "La Villa FC", scoreVisitante: "-" }
             ],
             semis: [
-                { local: "Los Pibes FC", scoreLocal: 2, visitante: "La Amistad", scoreVisitante: 1 },
-                { local: "C.A. La Scaloneta", scoreLocal: 3, visitante: "La Villa FC", scoreVisitante: 0 }
+                { local: "Ganador Cuartos 1", scoreLocal: "-", visitante: "Ganador Cuartos 3", scoreVisitante: "-" },
+                { local: "Ganador Cuartos 2", scoreLocal: "-", visitante: "Ganador Cuartos 4", scoreVisitante: "-" }
             ],
             final: [
-                { local: "Los Pibes FC", scoreLocal: "-", visitante: "C.A. La Scaloneta", scoreVisitante: "-" }
+                { local: "Ganador Semi 1", scoreLocal: "-", visitante: "Ganador Semi 2", scoreVisitante: "-" }
             ]
         };
 
@@ -175,7 +175,7 @@
 
             // 3. Limpiar y dibujar los partidos correspondientes
             const contenedor = document.getElementById('contenedor-partidos');
-            contenedor.innerHTML = ""; // Vacía lo que había antes
+            contenedor.innerHTML = ""; 
 
             const partidos = torneo[ronda];
 
@@ -195,7 +195,7 @@
             });
         }
 
-        // Al cargar la página por primera vez, mostramos Cuartos por defecto
+        // Al cargar la página por primera vez, muestra Cuartos
         window.onload = function() {
             cambiarRonda('cuartos');
         };
