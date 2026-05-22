@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneo Fútbol - Inscripción</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">🏆 Liga Relámpago</div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./fixture.html">Fixture</a></li>
+                <li><a href="./contacto.html" class="active">Inscripción</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor-formulario">
+        <h2>Inscribí a tu Equipo</h2>
+        <p>Completá los datos para asegurar tu cupo en el torneo.</p>
+
+        <form id="form-inscripcion" onsubmit="validarFormulario(event)">
+            <div class="grupo-input">
+                <label for="nombreEquipo">Nombre del Equipo:</label>
+                <input type="text" id="nombreEquipo" placeholder="Ej: Los Pibes FC">
+            </div>
+
+            <div class="grupo-input">
+                <label for="delegado">Nombre del Delegado:</label>
+                <input type="text" id="delegado" placeholder="Ej: Juan Pérez">
+            </div>
+
+            <div class="grupo-input">
+                <label for="telefono">Teléfono de Contacto:</label>
+                <input type="tel" id="telefono" placeholder="Ej: 351XXXXXXX">
+            </div>
+
+            <button type="submit" class="btn-enviar">Enviar Inscripción</button>
+            
+            <div id="mensaje-alerta" class="alerta"></div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Liga Relámpago - Proyecto de Software</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

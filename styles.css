@@ -1,0 +1,217 @@
+/* --- ESTILOS GENERALES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1e293b; /* Fondo oscuro moderno */
+    color: #f8fafc;
+    line-height: 1.6;
+}
+
+/* --- NAVBAR (Barra de Navegación) --- */
+header {
+    background-color: #0f172a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    border-bottom: 3px solid #22c55e; /* Línea verde fútbol */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #22c55e;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #22c55e;
+}
+
+/* --- PÁGINA DE INICIO (Sección Principal) --- */
+.hero {
+    text-align: center;
+    padding: 5rem 1rem;
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8));
+    border-bottom: 1px solid #334155;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-principal {
+    display: inline-block;
+    background-color: #22c55e;
+    color: #0f172a;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    transition: transform 0.2s;
+}
+
+.btn-principal:hover {
+    transform: scale(1.05);
+}
+
+.detalles {
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.tarjetas-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Se acomoda solo en celulares */
+}
+
+.tarjeta {
+    background-color: #334155;
+    padding: 20px;
+    border-radius: 8px;
+    width: 280px;
+    border-top: 4px solid #22c55e;
+}
+
+/* --- INTERFAZ FIXTURE Y PARTIDOS --- */
+.contenedor-fixture, .contenedor-formulario {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.filtros {
+    margin: 2rem 0;
+}
+
+.btn-filtro {
+    background-color: #334155;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-filtro.activo, .btn-filtro:hover {
+    background-color: #22c55e;
+    color: #0f172a;
+}
+
+.partido {
+    background-color: #0f172a;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #22c55e;
+}
+
+.equipo { 
+    font-weight: bold; 
+    width: 40%; 
+}
+
+.resultado { 
+    background-color: #334155; 
+    padding: 5px 12px; 
+    border-radius: 4px; 
+    font-weight: bold; 
+}
+
+/* --- INTERFAZ FORMULARIO DE INSCRIPCIÓN --- */
+form {
+    background-color: #0f172a;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: left;
+    margin-top: 2rem;
+    border-top: 3px solid #22c55e;
+}
+
+.grupo-input {
+    margin-bottom: 20px;
+}
+
+.grupo-input label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.grupo-input input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #334155;
+    background-color: #1e293b;
+    color: white;
+}
+
+.btn-enviar {
+    width: 100%;
+    background-color: #22c55e;
+    color: #0f172a;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-enviar:hover {
+    background-color: #16a34a;
+}
+
+.alerta {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    font-weight: bold;
+    text-align: center;
+}
+.alerta.error { background-color: #ef4444; color: white; }
+.alerta.exito { background-color: #22c55e; color: #0f172a; }
+
+/* --- FOOTER (Pie de página) --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #0f172a;
+    margin-top: 5rem;
+    color: #64748b;
+    border-top: 1px solid #334155;
+}

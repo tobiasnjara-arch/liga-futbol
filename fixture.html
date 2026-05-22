@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneo Fútbol - Fixture</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">🏆 Liga Relámpago</div>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./fixture.html" class="active">Fixture</a></li>
+                <li><a href="./contacto.html">Inscripción</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor-fixture">
+        <h2>Fases Eliminatorias</h2>
+        <p>Hacé clic en cada botón para ver los partidos de cada ronda.</p>
+        
+        <div class="filtros">
+            <button class="btn-filtro activo" onclick="cambiarRonda('cuartos')">Cuartos</button>
+            <button class="btn-filtro" onclick="cambiarRonda('semis')">Semis</button>
+            <button class="btn-filtro" onclick="cambiarRonda('final')">Final</button>
+        </div>
+
+        <section class="llave-partidos">
+            
+            <div id="cuartos" class="ronda">
+                <h3>Cuartos de Final</h3>
+                <div class="partido">
+                    <span class="equipo">Los Pibes FC</span> <span class="resultado">3</span> 
+                    vs 
+                    <span class="resultado">1</span> <span class="equipo">Dep. Fernet</span>
+                </div>
+                <div class="partido">
+                    <span class="equipo">C.A. La Scaloneta</span> <span class="resultado">2</span> 
+                    vs 
+                    <span class="resultado">0</span> <span class="equipo">Real Bañil</span>
+                </div>
+            </div>
+
+            <div id="semis" class="ronda" style="display: none;">
+                <h3>Semifinales</h3>
+                <div class="partido">
+                    <span class="equipo">Los Pibes FC</span> <span class="resultado">-</span> 
+                    vs 
+                    <span class="resultado">-</span> <span class="equipo">C.A. La Scaloneta</span>
+                </div>
+            </div>
+
+            <div id="final" class="ronda" style="display: none;">
+                <h3>Gran Final</h3>
+                <div class="partido por-jugar">
+                    <span class="equipo">Ganador Semi 1</span> 
+                    vs 
+                    <span class="equipo">Ganador Semi 2</span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Liga Relámpago - Proyecto de Software</p>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
