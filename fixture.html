@@ -3,83 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneo Fútbol - Fixture</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Liga Relámpago - Fixture</title>
+    <style>
+        body {
+            background-color: #121e2d;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        p.subtitle {
+            color: #a0aec0;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #2b3e50;
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button.active {
+            background-color: #4ade80;
+            color: #000000;
+        }
+
+        h2.round-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .matches-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .match-card {
+            background-color: #1a2a3a;
+            border-left: 5px solid #4ade80;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .team {
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 35%;
+        }
+
+        .team.home { text-align: left; }
+        .team.away { text-align: right; }
+
+        .score-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+        .score {
+            background-color: #2b3e50;
+            padding: 6px 14px;
+            border-radius: 4px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .vs {
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">🏆 Liga Relámpago</div>
-        <nav>
-            <ul>
-                <li><a href="./index.html">Inicio</a></li>
-                <li><a href="./fixture.html" class="active">Fixture</a></li>
-                <li><a href="./contacto.html">Inscripción</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <h1>Fases Eliminatorias</h1>
+        <p class="subtitle">Hacé clic en cada botón para ver los partidos de cada ronda.</p>
 
-    <main class="contenedor-fixture">
-        <h2>Fases Eliminatorias</h2>
-        <p>Hacé clic en cada botón para ver los partidos de cada ronda.</p>
-        
-        <div class="filtros">
-            <button class="btn-filtro activo" onclick="cambiarRonda('cuartos')">Cuartos</button>
-            <button class="btn-filtro" onclick="cambiarRonda('semis')">Semis</button>
-            <button class="btn-filtro" onclick="cambiarRonda('final')">Final</button>
+        <div class="buttons-container">
+            <button id="btn-cuartos" onclick="cambiarRonda('cuartos')">Cuartos</button>
+            <button id="btn-semis" onclick="cambiarRonda('semis')">Semis</button>
+            <button id="btn-final" onclick="cambiarRonda('final')">Final</button>
         </div>
 
-        <section class="llave-partidos">
-            
-            <div id="cuartos" class="ronda">
-                <h3>Cuartos de Final</h3>
-                <div class="partido">
-                    <span class="equipo">Los Pibes FC</span> <span class="resultado">3</span> 
-                    vs 
-                    <span class="resultado">1</span> <span class="equipo">Dep. Fernet</span>
-                </div>
-                <div class="partido">
-                    <span class="equipo">C.A. La Scaloneta</span> <span class="resultado">2</span> 
-                    vs 
-                    <span class="resultado">0</span> <span class="equipo">Real Bañil</span>
-                </div>
-                <div class="partido">
-                    <span class="equipo">Atlético Pritty</span> <span class="resultado">4</span> 
-                    vs 
-                    <span class="resultado">2</span> <span class="equipo">Miti y Miti FC</span>
-                </div>
-                <div class="partido">
-                    <span class="equipo">La Costeleta Mecánica</span> <span class="resultado">1</span> 
-                    vs 
-                    <span class="resultado">3</span> <span class="equipo">Fandango F.C.</span>
-                </div>
-            </div>
+        <h2 class="round-title" id="titulo-ronda">Cuartos de Final</h2>
 
-            <div id="semis" class="ronda" style="display: none;">
-                <h3>Semifinales</h3>
-                <div class="partido">
-                    <span class="equipo">Los Pibes FC</span> <span class="resultado">-</span> 
-                    vs 
-                    <span class="resultado">-</span> <span class="equipo">C.A. La Scaloneta</span>
-                </div>
+        <div class="matches-list" id="contenedor-partidos">
             </div>
-
-            <div id="final" class="ronda" style="display: none;">
-                <h3>Gran Final</h3>
-                <div class="partido por-jugar">
-                    <span class="equipo">Ganador Semi 1</span> 
-                    vs 
-                    <span class="equipo">Ganador Semi 2</span>
-                </div>
-            </div>
-
-        </section>
-    </main>
+    </div>
 
     <footer>
-        <p>&copy; 2026 Liga Relámpago - Proyecto de Software</p>
+        © 2026 Liga Relámpago - Proyecto de Software
     </footer>
 
-    <script src="./script.js"></script>
+    <script>
+        // Estructura de datos con TODOS los partidos ordenados por fase
+        const torneo = {
+            cuartos: [
+                { local: "Los Pibes FC", scoreLocal: 3, visitante: "Dep. Fernet", scoreVisitante: 1 },
+                { local: "C.A. La Scaloneta", scoreLocal: 2, visitante: "Real Bañil", scoreVisitante: 0 },
+                { local: "Talleres del Viaducto", scoreLocal: 1, visitante: "La Amistad", scoreVisitante: 2 },
+                { local: "Barrio Jardín", scoreLocal: 0, visitante: "La Villa FC", scoreVisitante: 3 }
+            ],
+            semis: [
+                { local: "Los Pibes FC", scoreLocal: 2, visitante: "La Amistad", scoreVisitante: 1 },
+                { local: "C.A. La Scaloneta", scoreLocal: 3, visitante: "La Villa FC", scoreVisitante: 0 }
+            ],
+            final: [
+                { local: "Los Pibes FC", scoreLocal: "-", visitante: "C.A. La Scaloneta", scoreVisitante: "-" }
+            ]
+        };
+
+        // Función para cambiar de pestaña y redibujar la pantalla
+        function cambiarRonda(ronda) {
+            // 1. Desactivar todos los botones y activar el seleccionado
+            document.getElementById('btn-cuartos').classList.remove('active');
+            document.getElementById('btn-semis').classList.remove('active');
+            document.getElementById('btn-final').classList.remove('active');
+            document.getElementById('btn-' + ronda).classList.add('active');
+
+            // 2. Cambiar el título superior automáticamente según la ronda
+            const tituloHtml = document.getElementById('titulo-ronda');
+            if (ronda === 'cuartos') tituloHtml.innerText = "Cuartos de Final";
+            if (ronda === 'semis') tituloHtml.innerText = "Semifinales";
+            if (ronda === 'final') tituloHtml.innerText = "Gran Final";
+
+            // 3. Limpiar y dibujar los partidos correspondientes
+            const contenedor = document.getElementById('contenedor-partidos');
+            contenedor.innerHTML = ""; // Vacía lo que había antes
+
+            const partidos = torneo[ronda];
+
+            partidos.forEach(partido => {
+                const tarjetaMatch = `
+                    <div class="match-card">
+                        <div class="team home">${partido.local}</div>
+                        <div class="score-container">
+                            <div class="score">${partido.scoreLocal}</div>
+                            <span class="vs">vs</span>
+                            <div class="score">${partido.scoreVisitante}</div>
+                        </div>
+                        <div class="team away">${partido.visitante}</div>
+                    </div>
+                `;
+                contenedor.innerHTML += tarjetaMatch;
+            });
+        }
+
+        // Al cargar la página por primera vez, mostramos Cuartos por defecto
+        window.onload = function() {
+            cambiarRonda('cuartos');
+        };
+    </script>
+
 </body>
 </html>
